@@ -1,7 +1,6 @@
 /* eslint-disable */
 import classNames from 'classnames';
 import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux'
 import { Todo } from '../../types/Todo';
 import { currentTodoSlice } from '../../features/currentTodo';
 import { useAppDispatch, useAppSelector } from '../../app/storeHooks';
@@ -87,7 +86,7 @@ export const TodoList: React.FC = () => {
                   >
                     <span className="icon">
                       <i
-                        className={`far ${currentTodo === todo ? 'fa-eye-slash' : 'fa-eye'}`}
+                        className={`far ${currentTodo?.id === todo.id ? 'fa-eye-slash' : 'fa-eye'}`}
                       />
                     </span>
                   </button>

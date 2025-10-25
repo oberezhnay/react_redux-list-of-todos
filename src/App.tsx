@@ -3,22 +3,14 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import { Loader, TodoFilter, TodoList, TodoModal } from './components';
 import React, { useEffect, useState } from 'react';
 import { getTodos } from './api';
-// import { Todo } from './types/Todo';
-// import { useDispatch, useSelector } from 'react-redux'
 import { useAppDispatch, useAppSelector } from './app/storeHooks';
-// import { Status } from './types/Status';
 import { todosSlice } from './features/todos';
 
 export const App: React.FC = () => {
-  // const [todos, setTodos] = useState<Todo[]>([]);
-  // const [query, setQuery] = useState<string>('');
-  // const [selectedFilter, setSelectedFilter] = useState<Status>('all');
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
-  // const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
 
   const dispatch = useAppDispatch();
-  // const todos = useSelector(state => state.todos);
   const currentTodo = useAppSelector(state => state.currentTodo);
 
   useEffect(() => {
@@ -29,20 +21,6 @@ export const App: React.FC = () => {
       .catch(error => setErrorMessage(error.message))
       .finally(() => setLoading(false));
   }, [dispatch]);
-
-  // const visibleTodos = todos
-  //   .filter(todo => {
-  //     if (selectedFilter === 'active') {
-  //       return !todo.completed;
-  //     }
-
-  //     if (selectedFilter === 'completed') {
-  //       return todo.completed;
-  //     }
-
-  //     return true;
-  //   })
-  //   .filter(todo => todo.title.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <>
